@@ -95,10 +95,16 @@
 		<!-- end -->
 		
 		<!-- 下面展示struts页面组件的用法 -->
-
 		<action path="/WebComponentsDisplay" type="com.raph.struts.action.WebComponentsAction" name="webComponentsForm" 
 				 input="/jsp/webComponentsList.jsp">
 			<forward name="success" path="/jsp/webComponentsList.jsp" />
+		</action>
+		<!-- end -->
+		
+		<!-- 下面展示LogicTags的用法 -->
+		<action path="/logicTagsDisplay" type="com.raph.struts.action.LogicTagsAction" 
+				 input="/jsp/logicTags.jsp">
+			<forward name="success" path="/jsp/logicTags.jsp" />
 		</action>
 		<!-- end -->
 		
