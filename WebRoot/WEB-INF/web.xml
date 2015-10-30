@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>StrutsExample</display-name>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <!-- 多个配置文件 -->
+      <param-value>/WEB-INF/struts-config.xml,/WEB-INF/struts-config-another.xml</param-value>
+    </init-param>
+    <!-- 下面这种同样是多个配置文件的功能，但是，要注意它匹配的路径是/StrutsExample/special/*  -->
+    <init-param>
+        <param-name>config/special</param-name>
+        <param-value>/WEB-INF/struts-config-special.xml</param-value>
+    </init-param>
+    
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 配置编码 -->
+  	<filter>  
+        <filter-name>Encoding</filter-name>  
+        <filter-class>  
+            com.raph.struts.filter.UrlEncodeFilter  
+        </filter-class>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>Encoding</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>  
+   <!-- end -->
+  
+ <!--如果注释该项，tomcat默认会在WEB-INF这一层级目录寻找index文件
+   <welcome-file-list>
+	<welcome-file>
+		/jsp/Welcome.jsp
+	</welcome-file>
+  </welcome-file-list> -->
+  
+  
+  <!-- 配置taglib -->
+  <taglib>
+  		<!-- taglib-uri 里的字符串是随便定义的，我直接使用jsp里的，省去改jsp的烦恼 -->
+		<taglib-uri>http://struts.apache.org/tags-bean</taglib-uri>
+		<taglib-location>
+			/WEB-INF/taglib/struts-bean.tld
+		</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>http://struts.apache.org/struts-html</taglib-uri>
+		<taglib-location>
+			/WEB-INF/taglib/struts-html.tld
+		</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>http://struts.apache.org/struts-logic</taglib-uri>
+		<taglib-location>
+			/WEB-INF/taglib/struts-logic.tld
+		</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>http://struts.apache.org/struts-template</taglib-uri>
+		<taglib-location>
+			/WEB-INF/taglib/struts-template.tld
+		</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>http://struts.apache.org/struts-tiles</taglib-uri>
+		<taglib-location>
+			/WEB-INF/taglib/struts-tiles.tld
+		</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>http://struts.apache.org/struts-nested</taglib-uri>
+		<taglib-location>
+			/WEB-INF/taglib/struts-nested.tld
+		</taglib-location>
+	</taglib>
+	<!-- taglib配置结束 -->
+</web-app>

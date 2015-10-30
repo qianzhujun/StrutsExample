@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+  <form-beans>
+		<form-bean name="helloWorldForm" 
+			type="com.raph.struts.form.HelloWorldForm"/>
+			
+		<form-bean name="userForm"
+			type="com.raph.struts.form.UserForm"/>
+			
+		<form-bean name="webComponentsForm"
+			type="com.raph.struts.form.WebComponentsForm"/>
+			
+		<form-bean name="dynaUserForm"   
+		      type="org.apache.struts.action.DynaActionForm">
+		      <form-property name="username" type="java.lang.String"/>
+		</form-bean>
+			
+	</form-beans>
+
+	<action-mappings>
+		<action path="/helloWorld"
+			type="com.raph.struts.action.HelloWorldAction"
+			name="helloWorldForm">
+			<forward name="success" path="/jsp/HelloWorld.jsp"/>
+		</action>
+		
+		<!-- 下面演示了怎么用一个action来匹配不同的URL 
+		UserAction里的ListUser,AddUser对应的URL就是/AddUserAction.do,/ListUserAction.do
+		-->
+		<action
+			path="/*UserAction"
+			type="com.raph.struts.action.UserAction"
+			parameter="{1}User">
+			<forward name="success" path="/jsp/{1}User.jsp"/>
+		</action>
+		<!-- end -->
+		
+		
+		<!-- 下面演示如何使用DispatchAction将相似功能的函数归并在一个类里面 -->
+		<!-- The DispatchAction class provides a way to group all related functions into a single action class. It’s a useful mechanism to avoid create separate action classe for each function -->
+		<action
+			path="/LoginPage"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/jsp/multi-language.jsp"/>
+			
+		<action
+			path="/Submit"
+			type="com.raph.struts.action.LanguageSelectAction"
+			name="userForm"
+			validate="true"
+			input="/jsp/multi-language.jsp">
+			<forward name="success" path="/jsp/multi-language.jsp"/>
+		</action>
+		<!-- 注意这个action里有个 method参数,页面传过来的method对应的值就是类里的方法名-->
+		<action
+			path="/Locale"
+			type="com.raph.struts.action.LanguageSelectAction"
+			name="userForm"
+			parameter="method"
+			validate="false">
+			<forward name="success" path="/jsp/multi-language.jsp"/>
+		</action>
+		<!-- end -->
+		
+		
+		<!-- MappingDispatchAction class is used to group similar functionality into a single action class, 
+		and execute the function depends on parameter attribute of the corresponding ActionMapping.  
+		它与DispatchAction的区别就在于DispatchAction里的方法名是由参数传进来的，而MappingDispatchAction是配置好在parameter里的。
+		-->
+		<action path="/TestDispatchAction" type="org.apache.struts.actions.ForwardAction"
+			parameter="/jsp/TestDispatchAction.jsp">
+		</action>
+		
+		<action path="/CustomDispatchActionXML" type="com.raph.struts.action.MyCustomDispatchAction"
+			parameter="generateXML">
+			<forward name="success" path="/jsp/DispatchExample.jsp" />
+		</action>
+		
+		<action path="/CustomDispatchActionExcel" type="com.raph.struts.action.MyCustomDispatchAction"
+			parameter="generateExcel">
+			<forward name="success" path="/jsp/DispatchExample.jsp" />
+		</action>
+		<!-- end -->
+		
+		<!-- 下面展示动态form的用法 -->
+		<action path="/Login" type="org.apache.struts.actions.ForwardAction" parameter="/jsp/login.jsp" />
+
+		<action path="/ValidateLogin" type="com.raph.struts.action.UserDynaAction" name="dynaUserForm">
+			<forward name="success" path="/jsp/logined.jsp" />
+			<forward name="failed" path="/jsp/login.jsp" />
+		</action>
+		<!-- end -->
+		
+		<!-- 下面展示struts页面组件的用法 -->
+
+		<action path="/WebComponentsDisplay" type="com.raph.struts.action.WebComponentsAction" name="webComponentsForm" 
+				 input="/jsp/webComponentsList.jsp">
+			<forward name="success" path="/jsp/webComponentsList.jsp" />
+		</action>
+		<!-- end -->
+		
+	</action-mappings>
+	
+	<message-resources
+		parameter="com.raph.struts.properties.Common" />
+  
+</struts-config>
+
