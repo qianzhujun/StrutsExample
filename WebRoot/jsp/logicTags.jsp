@@ -28,14 +28,14 @@
  
  <h2>下面展示怎么判断空值</h2> 
  <logic:empty name="listMsg1">
-	<h3>listMsg1 is empty</h3>
+	listMsg1 is empty
 </logic:empty>
 <logic:empty name="listMsg2">
-	<h3>listMsg2 is empty</h3>
+	listMsg2 is empty
 </logic:empty>
 
 <logic:notEmpty name="listMsg1">
-	<h3>listMsg1 is not empty</h3>
+	listMsg1 is not empty
 	<logic:iterate name="listMsg1" id="listMsgId">
 		<p>
 		List Messages 1 - <bean:write name="listMsgId"/>
@@ -44,7 +44,7 @@
 </logic:notEmpty>
 
 <logic:notEmpty name="listMsg2">
-	<h3>listMsg2 is not empty</h3>
+	listMsg2 is not empty
 	<logic:iterate name="listMsg2" id="listMsgId">
 		<p>
 		List Messages 2 - <bean:write name="listMsgId"/>
@@ -67,6 +67,24 @@
 		</p>
 	</logic:notEqual>
 </logic:iterate> 
+  
+  
+<h2>下面展示数字的比较逻辑</h2>
+<logic:greaterThan name="varNumber" value="99">
+	<p>Number 100 > 99 = true</p>
+</logic:greaterThan>
+
+<logic:greaterEqual name="varNumber" value="100">
+	<p>Number 100 >= 100 = true</p>
+</logic:greaterEqual>
+
+<logic:lessThan name="varNumber" value="101">
+	<p>Number 100 < 101 = true</p>
+</logic:lessThan>
+
+<logic:lessEqual name="varNumber" value="100">
+	<p>Number 100 <= 100 = true</p>
+</logic:lessEqual>  
   
  
 </body>

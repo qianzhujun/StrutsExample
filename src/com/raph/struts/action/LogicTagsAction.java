@@ -60,6 +60,17 @@ public class LogicTagsAction extends Action {
 			//no value inside
 			List<String> listMsgWithoutValues = new ArrayList<String>();
 			request.setAttribute("listMsg2", listMsgWithoutValues);
+		//end
+			
+		//下面展示如何判断Number是否大于小于指定数值
+		/*	In Struts, four number condition tags are available…
+			<logic:greaterThan> – check the given property is greater than the given value.
+			<logic:greaterEqual> – check the given property is greater than or equal to the given value.
+			<logic:lessThan> – check the given property is less than the given value.
+			<logic:lessEqual> – check the given property is less than or equal to the given value.	
+		*/	
+			request.setAttribute("varNumber", 100);
+			
 			
 			return mapping.findForward("success");
 			
