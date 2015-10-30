@@ -44,8 +44,25 @@ public class LogicTagsAction extends Action {
 			}
 			request.setAttribute("listUsers", listUsers);
 			
-			return mapping.findForward("success");
+			
 		//end 	
+			
+		//下面展示了如何在页面上判断是否为空值
+		// <logic:empty> is execute only if the specified property is null, zero-length String or doesn’t exists
+			List<String> listMsgWithValues = new ArrayList<String>();
+			listMsgWithValues.add("Value A");
+			listMsgWithValues.add("Value B");
+			listMsgWithValues.add("Value C");
+			listMsgWithValues.add("Value D");
+			
+			request.setAttribute("listMsg1", listMsgWithValues);
+			
+			//no value inside
+			List<String> listMsgWithoutValues = new ArrayList<String>();
+			request.setAttribute("listMsg2", listMsgWithoutValues);
+			
+			return mapping.findForward("success");
+			
 			
 		}
 }
