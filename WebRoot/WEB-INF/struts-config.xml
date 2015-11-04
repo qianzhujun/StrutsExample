@@ -17,6 +17,9 @@
 		      type="org.apache.struts.action.DynaActionForm">
 		      <form-property name="username" type="java.lang.String"/>
 		</form-bean>
+		
+		<form-bean name="messageForm"
+			type="com.raph.struts.form.MessageForm"/>
 			
 	</form-beans>
 
@@ -102,9 +105,16 @@
 		<!-- end -->
 		
 		<!-- 下面展示LogicTags的用法 -->
-		<action path="/logicTagsDisplay" type="com.raph.struts.action.LogicTagsAction" 
+		<action path="/LogicTagsDisplay" type="com.raph.struts.action.LogicTagsAction" 
 				 input="/jsp/logicTags.jsp">
 			<forward name="success" path="/jsp/logicTags.jsp" />
+		</action>
+		<!-- end -->
+		
+		<!-- 下面展示Message的显示用法 -->
+		<action path="/ShowValidationMessage" type="com.raph.struts.action.MessageAction"  name="messageForm"
+				 input="/jsp/Message.jsp">
+			<forward name="success" path="/jsp/Message.jsp" />
 		</action>
 		<!-- end -->
 		
