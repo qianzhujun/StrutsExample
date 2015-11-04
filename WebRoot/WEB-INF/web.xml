@@ -82,4 +82,12 @@
 		</taglib-location>
 	</taglib>
 	<!-- taglib配置结束 -->
+	
+	<!-- 处理难看的404 handle http 404 -->
+	<!-- Don't test it in IE. Because IE will  replaces the 404 response with its content.   -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/Handle404.do</location>
+	</error-page>
+	
 </web-app>
