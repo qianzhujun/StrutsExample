@@ -17,8 +17,27 @@
 		      type="org.apache.struts.action.DynaActionForm">
 		      <form-property name="username" type="java.lang.String"/>
 		</form-bean>
+		
+		<form-bean name="messageForm"
+			type="com.raph.struts.form.MessageForm"/>
 			
 	</form-beans>
+	
+	<!-- 分别注释写明的exception处理方式，看看何为自定义的exceptionhandle -->
+	<!--
+	<global-exceptions>
+		<exception key="error.global.mesage" type="java.io.IOException"
+			path="/jsp/error.jsp" />
+	</global-exceptions> -->
+	
+	<global-exceptions>
+	    <exception
+	      key="error.global.mesage"
+	      type="java.lang.Exception"
+	      handler="com.raph.struts.Exception.MyCustomExceptionHandler"
+	      path="/jsp/error.jsp" />
+	</global-exceptions>
+	
 
 	<action-mappings>
 		<action path="/helloWorld"
@@ -102,13 +121,30 @@
 		<!-- end -->
 		
 		<!-- 下面展示LogicTags的用法 -->
-		<action path="/logicTagsDisplay" type="com.raph.struts.action.LogicTagsAction" 
+		<action path="/LogicTagsDisplay" type="com.raph.struts.action.LogicTagsAction" 
 				 input="/jsp/logicTags.jsp">
 			<forward name="success" path="/jsp/logicTags.jsp" />
 		</action>
 		<!-- end -->
 		
+		<!-- 下面展示Message的显示用法 -->
+		<action path="/ShowValidationMessage" type="com.raph.struts.action.MessageAction"  name="messageForm"
+				 input="/jsp/Message.jsp">
+			<forward name="success" path="/jsp/Message.jsp" />
+		</action>
+		<!-- end -->
+		
+		
+		<!-- 下面展示global-exception用法 -->
+		<action path="/ShowException" type="com.raph.struts.action.ExceptionAction" 
+				 input="/jsp/Message.jsp">
+			<forward name="success" path="/jsp/Message.jsp" />
+		</action>
+		<!-- end -->
+		
 	</action-mappings>
+
+	
 	
 	<message-resources
 		parameter="com.raph.struts.properties.Common" />
