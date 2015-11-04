@@ -86,6 +86,68 @@
 	<p>Number 100 <= 100 = true</p>
 </logic:lessEqual>  
   
+  
+<h2>下面展示字符串的比较逻辑</h2>
+Email - yncjzlh@gmail.com<br/><br/>
+
+1. Is "yncjzlh" is a substring of the email? -
+<logic:match name="email" value="cjz">
+	true
+</logic:match>
+<logic:notMatch name="email" value="cjz">
+	false
+</logic:notMatch>
+
+<br/><br/>
+
+2. Is "cjzABC" is a substring of the email? -
+<logic:match name="email" value="cjzABC">
+	true
+</logic:match>
+<logic:notMatch name="email" value="cjzABC">
+	false
+</logic:notMatch>
+
+<br/><br/>
+
+3. Is email start with "yncj"? -
+<logic:match name="email" value="yncj" location="start">
+	true
+</logic:match>
+<logic:notMatch name="email" value="yncj" location="start">
+	false
+</logic:notMatch>
+
+<br/><br/>
+
+4.. Is email start with "ABC"? -
+<logic:match name="email" value="ABC" location="start">
+	true
+</logic:match>
+<logic:notMatch name="email" value="ABC" location="start">
+	false
+</logic:notMatch>
+
+<br/><br/>
+
+5. Is email end with "com"? -
+<logic:match name="email" value="com" location="end">
+	true
+</logic:match>
+<logic:notMatch name="email" value="com" location="end">
+	false
+</logic:notMatch>
+
+<br/><br/>
+
+6. Is email end with "net"? -
+<logic:match name="email" value="net" location="end">
+	true
+</logic:match>
+<logic:notMatch name="email" value="net" location="end">
+	false
+</logic:notMatch>  
+  
  
 </body>
 </html>

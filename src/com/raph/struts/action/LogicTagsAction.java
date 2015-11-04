@@ -72,6 +72,11 @@ public class LogicTagsAction extends Action {
 			request.setAttribute("varNumber", 100);
 			
 			
+			
+		//下面展示如何判断值里包含指定字符串
+		//Struts <logic:match> tag is used to check the given property contains the given value as substring.
+			request.setAttribute("email", "yncjzlh@gmail.com");
+			
 			return mapping.findForward("success");
 			
 			
