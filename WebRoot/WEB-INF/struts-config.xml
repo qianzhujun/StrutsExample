@@ -150,12 +150,22 @@
 		<!-- end -->
 		
 		
+		<!-- 下面展示tile的用法，使用的时候，需要配置TilesPlugin -->
+		<!-- 详细运作过程，可看/images/Struts1-tiles-relationship.png -->
+		<action path="/TestTile" type="org.apache.struts.actions.ForwardAction"
+			parameter="/jsp/testTile.jsp" />
+		<!-- end -->
+		
+		
 	</action-mappings>
 
 	
 	
-	<message-resources
-		parameter="com.raph.struts.properties.Common" />
+	<message-resources parameter="com.raph.struts.properties.Common" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+	</plug-in>
   
 </struts-config>
 
