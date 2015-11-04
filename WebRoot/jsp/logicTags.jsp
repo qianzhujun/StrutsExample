@@ -149,5 +149,41 @@ Email - yncjzlh@gmail.com<br/><br/>
 </logic:notMatch>  
   
  
+<h2>下面展示如何判断一个对象或属性是否存在</h2>
+
+<logic:present name="user">
+	user object is exists.
+</logic:present>
+<logic:notPresent name="user">
+	user object does not exists.
+</logic:notPresent>
+
+<br/></br/>
+
+<logic:present name="abc">
+	abc object is exists.
+</logic:present>
+<logic:notPresent name="abc">
+	abc object does not exists.
+</logic:notPresent>
+
+<br/></br/>
+
+<logic:present name="user" property="url">
+	User object, url property is exists.
+</logic:present>
+<logic:notPresent name="user" property="url">
+	User object, url property does not exists.
+</logic:notPresent>
+
+<br/></br/>
+
+<logic:present name="user" property="email">
+	User object, email property is exists.
+</logic:present>
+<logic:notPresent name="user" property="email">
+	User object, email property does not exists.
+</logic:notPresent>
+ 
 </body>
 </html>

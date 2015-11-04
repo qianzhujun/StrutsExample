@@ -77,6 +77,16 @@ public class LogicTagsAction extends Action {
 		//Struts <logic:match> tag is used to check the given property contains the given value as substring.
 			request.setAttribute("email", "yncjzlh@gmail.com");
 			
+			
+		//下面展示如何判断一个对象或对象的属性是否存在
+		/*	Struts <logic:present> tag is used to check the given object or property is present or exists in the current request; 
+			while the <logic:notPresent> is doing the opposite way.	*/
+			User user = new User();
+			user.setUrl("http://www.test.com");
+			request.setAttribute("user", user);
+			
+			
+			
 			return mapping.findForward("success");
 			
 			
