@@ -1,5 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
-
+<%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
@@ -12,25 +11,24 @@
 <body>
 <html:form action="/WebComponentsDisplay">
 	<div style="padding:16px">
-		性别:<html:radio property="sex" value="male" />
-		男<html:radio property="sex" value="female" />
-		女
+		<bean:message key="label.common.html.radio.sex" />:<html:radio property="sex" value="male" />
+		<bean:message key="label.common.html.radio.sex.male" /><html:radio property="sex" value="female" />
+		<bean:message key="label.common.html.radio.sex.female" /> 
 	</div>
-
 	<div style="padding:16px">
 		<div style="float:left;padding-right:8px;">
-			地址:
+			<bean:message key="label.common.html.textarea.address" />:
 		</div>
 		<html:textarea property="address" cols="50" rows="10" />
 	</div>
 
 	<div style="padding:16px">
-		邮寄:
+		<bean:message key="label.common.html.checkbox.name" />:
 		<html:checkbox property="checkboxValue" />
 	</div>
 
 	<div style="padding:16px">
-		年份
+		<bean:message key="label.common.html.select.year" />
 		:
 		<html:select property="year">
 			<html:option value="">-- None --</html:option>
@@ -47,11 +45,11 @@
 	<div style="padding:16px">
 		<div style="float:left;padding-right:8px;">
 			<html:submit>
-				提交
+				<bean:message key="label.common.html.button.submit" />
 			</html:submit>
 		</div>
 		<html:reset>
-			重置
+			<bean:message key="label.common.html.button.reset" />
 		</html:reset>
 	</div>
 </html:form>
